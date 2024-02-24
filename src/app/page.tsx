@@ -1,23 +1,7 @@
-import {Card, CardContent, CardDescription, CardHeader, CardTitle} from "@/components/ui/card";
+import {Card, CardDescription, CardHeader, CardTitle} from "@/components/ui/card";
+import {Character} from "@/lib/types";
+import {FetchButton} from "@/app/FetchButton";
 
-interface Character {
-    name: string;
-    height: number;
-    mass: number;
-    hair_color: string;
-    skin_color: string;
-    eye_color: string;
-    birth_year: string;
-    gender: string;
-    home_world: string;
-    films: string[];
-    species: string[];
-    vehicles: string[];
-    starships: string[];
-    created: string;
-    edited: string;
-    url: string;
-}
 
 async function getCharacters(): Promise<Character[]> {
     const res = await fetch(
@@ -46,6 +30,9 @@ export default async function Home() {
                         </CardHeader>
                     </Card>
                 })}
+            </div>
+            <div>
+                <FetchButton></FetchButton>
             </div>
         </div>
     );
