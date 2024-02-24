@@ -9,7 +9,7 @@ interface Character {
     eye_color: string;
     birth_year: string;
     gender: string;
-    homeworld: string;
+    home_world: string;
     films: string[];
     species: string[];
     vehicles: string[];
@@ -26,27 +26,24 @@ async function getCharacters(): Promise<Character[]> {
     );
     const data = await res.json();
 
-
     return data?.results as Character[];
 }
 
 
 export default async function Home() {
     const characters: Character[] = await getCharacters();
-
     return (
-        <div>
+        <div className='container mx-2xl'>
             <h1>Characters</h1>
-            <div className="flex">
+
+            <div className="grid grid-cols-5 mt-16">
                 {characters?.map(character => {
-                    return <Card key={character.name} className="w-[350px]">
+                    return <Card key={character.name}
+                                 className="w-[220px] mb-8 hover:scale-125 ease-in duration-300 cursor-pointer">
                         <CardHeader>
                             <CardTitle>{character.name}</CardTitle>
-                            <CardDescription>{character.height} {character.mass}</CardDescription>
+                            <CardDescription>{character.birth_year} {character.gender}</CardDescription>
                         </CardHeader>
-                        <CardContent>
-                            {character.created.substring(0, 10)}
-                        </CardContent>
                     </Card>
                 })}
             </div>
