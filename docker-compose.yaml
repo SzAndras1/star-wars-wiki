@@ -1,0 +1,12 @@
+services:
+
+  application:
+    build: ./
+    container_name: star-wars-wiki
+    ports:
+      - '3000:3000'
+    volumes:
+      - app-tmp:/tmp
+
+volumes:
+  app-tmp:
