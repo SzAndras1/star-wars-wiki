@@ -1,8 +1,15 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Star Wars Wiki
+
+---
+
+This is a [Next.js](https://nextjs.org/) web application that uses [Swapi.dev](https://swapi.dev/) API to list Star Wars characters.
+Some Components from [Shadcn](https://ui.shadcn.com/) library.
 
 ## Getting Started
 
 First, run the development server:
+
+### Manual
 
 ```bash
 npm run dev
@@ -14,23 +21,34 @@ pnpm dev
 bun dev
 ```
 
+### Docker
+
+```bash
+docker compose run
+```
+
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Features
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+![screenshot of the initial appearance of the app](markdown_pictures/initial.png)
 
-## Learn More
+Initially, the application queries the characters without any parameters.
+It loads the first page, which consists of 10 characters.
 
-To learn more about Next.js, take a look at the following resources:
+![load more button](markdown_pictures/loadbutton.png)
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Use this button to display another page of characters. 
+This will appear below the previous queried characters. 
+When the last page is reached, the button disappears.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+![modal, when opened](markdown_pictures/modal.png)
 
-## Deploy on Vercel
+Click one of the card to open additional information about the character.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+![filter input elements](markdown_pictures/filter.png)
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+You can filter by name and gender.
+After filling in the form, pressing the search button will replace the previous data with the new filtering. 
+If the form is blank, pressing the search button will retrieve all the unfiltered data again.
+
