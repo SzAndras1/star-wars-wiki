@@ -11,7 +11,7 @@ export function Cards({characters}: characterArray) {
             <div className="grid grid-cols-5">
                 {characters.map(character => {
                     return <Card key={character.name}
-                                 className="w-[220px] mb-8 hover:scale-125 ease-in duration-300 cursor-pointer">
+                                 className="w-[220px] mb-8 bg-blue-200 hover:scale-125 ease-in duration-300 cursor-pointer">
                         <CardHeader>
                             <CardTitle>{character.name}</CardTitle>
                             <CardDescription>{character.birth_year} {character.gender}</CardDescription>
