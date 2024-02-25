@@ -1,17 +1,32 @@
+'use client'
+
 import {Character} from "@/lib/types";
 import {Card, CardDescription, CardHeader, CardTitle} from "@/components/ui/card";
+import {useState} from "react";
+import {Modal} from "@/app/Modal";
 
 interface characterArray {
     characters: Character[];
 }
 
 export function Cards({characters}: characterArray) {
+    const [modal, setModal] = useState(false);
+    const [characterIndex, setCharacterIndex] = useState(0);
+    const [filmArray, setFilmArray] = useState([] as number[]);
+    const handleClick = (e, ndx: number) => {
+        setCharacterIndex(ndx)
+        setModal(true)
+        const array = characters[ndx].films.map(i => i.at(i.length - 2))
+        setFilmArray(array);
+    }
+
     return (
         <div className='container mx-2xl'>
             <div className="grid grid-cols-5">
-                {characters.map(character => {
+                {characters.map((character, ndx) => {
                     return <Card key={character.name}
-                                 className="w-[220px] mb-8 bg-blue-200 hover:scale-125 ease-in duration-300 cursor-pointer">
+                                 className="w-[220px] mb-8 bg-blue-200 hover:scale-125 ease-in duration-300 cursor-pointer"
+                                 onClick={e => handleClick(e, ndx)}>
                         <CardHeader>
                             <CardTitle>{character.name}</CardTitle>
                             <CardDescription>{character.birth_year} {character.gender}</CardDescription>
@@ -19,6 +34,20 @@ export function Cards({characters}: characterArray) {
                     </Card>
                 })}
             </div>
+            {characters.length > 0 ?
+                <Modal openModal={modal} closeModal={() => setModal(false)}>
+                    <div className="flex items-center justify-center h-[300px] w-[340px] text-xl">
+                        <div>
+                            <ul>
+                                <li>Name: {characters[characterIndex].name}</li>
+                                <li>Name: {characters[characterIndex].height}</li>
+                                <li>Name: {characters[characterIndex].mass}</li>
+                            </ul>
+                            <div>Films: {filmArray.join(', ')}</div>
+                        </div>
+                    </div>
+                </Modal>
+                : null}
         </div>
     );
 }

@@ -14,11 +14,9 @@ export async function GET(request: NextRequest) {
     const data = await req.json();
     let genderFilter = [];
     if (gender) {
-        data.results.forEach(i => {
-            if (i.gender === gender) {
-                genderFilter.push(i);
-            }
-        })
+        if (data.results.length > 0) {
+            genderFilter = data.results.filter(character => character.gender === gender);
+        }
     }
     const res = {};
     if (gender) {
