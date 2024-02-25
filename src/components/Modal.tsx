@@ -15,7 +15,7 @@ export function Modal({openModal, closeModal, children}) {
     }, [openModal]);
 
     return (
-        <dialog className="border-none rounded-s w-[350px] h-[250px]" ref={ref} onCancel={closeModal}>
+        <dialog className="border-none rounded-s w-[350px] h-[290px]" ref={ref} onCancel={closeModal}>
             <div className="flex flex-col justify-center items-center mt-10">
                 {children}
                 <Button

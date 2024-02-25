@@ -3,7 +3,7 @@
 import {Character} from "@/lib/types";
 import {Card, CardDescription, CardHeader, CardTitle} from "@/components/ui/card";
 import {useState} from "react";
-import {Modal} from "@/app/Modal";
+import {Modal} from "@/components/Modal";
 
 interface characterArray {
     characters: Character[];

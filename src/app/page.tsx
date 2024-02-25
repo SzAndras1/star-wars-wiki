@@ -1,9 +1,9 @@
-import {FetchButton} from "@/app/FetchButton";
+import {ListCharacters} from "@/components/ListCharacters";
 
 export default async function Home() {
     return (
         <div>
-            <FetchButton></FetchButton>
+            <ListCharacters></ListCharacters>
         </div>
     );
 }

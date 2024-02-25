@@ -2,13 +2,13 @@
 
 import {useEffect, useRef, useState} from "react";
 import {Character} from "@/lib/types";
-import {Cards} from "@/app/Cards";
+import {Cards} from "@/components/Cards";
 import {Label} from "@/components/ui/label";
 import {Input} from "@/components/ui/input";
 import {Select, SelectContent, SelectItem, SelectTrigger, SelectValue} from "@/components/ui/select";
 import {Button} from "@/components/ui/button";
 
-export function FetchButton() {
+export function ListCharacters() {
     const [characters, setCharacters] = useState([] as Character[]);
     const [page, setPage] = useState(1);
     const [formValid, setFormValid] = useState(true);
