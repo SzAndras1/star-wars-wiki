@@ -16,3 +16,8 @@ export interface Character {
     edited: string;
     url: string;
 }
+
+export interface ResponseDto {
+    count: number;
+    results: Character[];
+}

@@ -1,4 +1,5 @@
 import {NextRequest} from "next/server";
+import {Character, ResponseDto} from "@/lib/types";
 
 export async function GET(request: NextRequest) {
     const searchParams = request.nextUrl.searchParams;
@@ -15,10 +16,10 @@ export async function GET(request: NextRequest) {
     let genderFilter = [];
     if (gender) {
         if (data.results.length > 0) {
-            genderFilter = data.results.filter(character => character.gender === gender);
+            genderFilter = data.results.filter((character: Character) => character.gender === gender);
         }
     }
-    const res = {};
+    const res: ResponseDto = {count: 0, results: []};
     if (gender) {
         res.count = genderFilter.length;
         res.results = genderFilter;
