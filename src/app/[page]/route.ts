@@ -3,10 +3,31 @@ import {NextRequest} from "next/server";
 export async function GET(request: NextRequest) {
     const searchParams = request.nextUrl.searchParams;
     const page = searchParams.get('page');
-    const res = await fetch(
-        `https://swapi.dev/api/people/?page=${page}`
-    );
-    const data = await res.json();
+    const name = searchParams.get('name');
+    const gender = searchParams.get('gender')
+    let req;
+    if (name === null) {
+        req = await fetch(`https://swapi.dev/api/people/?page=${page}`);
+    } else {
+        req = await fetch(`https://swapi.dev/api/people/?search=${name}&page=${page}`);
+    }
+    const data = await req.json();
+    let genderFilter = [];
+    if (gender) {
+        data.results.forEach(i => {
+            if (i.gender === gender) {
+                genderFilter.push(i);
+            }
+        })
+    }
+    const res = {};
+    if (gender) {
+        res.count = genderFilter.length;
+        res.results = genderFilter;
+    } else {
+        res.count = data.count;
+        res.results = data.results;
+    }
 
-    return Response.json(data.results)
+    return Response.json(res);
 }
