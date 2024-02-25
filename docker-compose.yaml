@@ -6,7 +6,9 @@ services:
     ports:
       - '3000:3000'
     volumes:
-      - app-tmp:/tmp
+      - app:/var/lib/project/src
+      - node-modules:/var/lib/project/node_modules
 
 volumes:
-  app-tmp:
+  app:
+  node-modules:
