@@ -36,14 +36,16 @@ export function Cards({characters}: characterArray) {
             </div>
             {characters.length > 0 ?
                 <Modal openModal={modal} closeModal={() => setModal(false)}>
-                    <div className="flex items-center justify-center h-[300px] w-[340px] text-xl">
-                        <div>
-                            <ul>
-                                <li>Name: {characters[characterIndex].name}</li>
-                                <li>Name: {characters[characterIndex].height}</li>
-                                <li>Name: {characters[characterIndex].mass}</li>
-                            </ul>
-                            <div>Films: {filmArray.join(', ')}</div>
+                    <div className="container text-xl">
+                        <div className="grid gap-y-2 gap-x-0 grid-cols-2">
+                            <div className="text-right mr-6">Name:</div>
+                            <div>{characters[characterIndex].name}</div>
+                            <div className="text-right mr-6">Height:</div>
+                            <div>{characters[characterIndex].height}</div>
+                            <div className="text-right mr-6">Mass:</div>
+                            <div>{characters[characterIndex].mass}</div>
+                            <div className="text-right mr-6">Films:</div>
+                            <div>{filmArray.join(', ')}</div>
                         </div>
                     </div>
                 </Modal>
